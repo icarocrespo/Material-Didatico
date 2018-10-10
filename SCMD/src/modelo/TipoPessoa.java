@@ -4,18 +4,10 @@ package modelo;
  *
  * @author icaro
  */
-public class Sala {
-    private Long id;
-    private String nome;
-    
-    public Sala(Long id, String nome){
-        this.id = id;
-        this.nome = nome;
-    }
-    
-    public Sala(){
-    
-    }
+public abstract class TipoPessoa {
+ 
+    protected Long id;
+    protected String nome;
 
     public Long getId() {
         return id;

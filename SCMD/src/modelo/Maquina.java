@@ -19,6 +19,10 @@ public class Maquina {
         this.conf_hardware = conf_hardware;
         this.so = so;
     }
+    
+    public Maquina(){
+    
+    }
 
     public Integer getNumero() {
         return numero;

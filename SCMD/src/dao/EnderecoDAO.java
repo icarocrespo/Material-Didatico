@@ -4,6 +4,7 @@ package dao;
  *
  * @author icaro
  */
-public class EnderecoDAO {
+public class EnderecoDAO extends GenericDAO{
+    
     
 }
