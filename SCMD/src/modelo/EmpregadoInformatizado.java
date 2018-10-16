@@ -4,12 +4,18 @@ package modelo;
  *
  * @author icaro
  */
-public class EmpregadoInformatizado extends Empregado{
+public class EmpregadoInformatizado extends Empregado {
 
-    
+    public EmpregadoInformatizado(String nome, Long id, Endereco endereco, TipoPessoa tipoPessoa, String login, String senha, Empresa empresa, Filial filial, Boolean ativo, Lotacao lotacao) {
+        super(nome, id, endereco, tipoPessoa, login, senha, empresa, filial, ativo, lotacao);
+    }
+
+    public EmpregadoInformatizado() {
+    }
+
     @Override
     public Float calculaSalario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        return 0f;
     }
-    
 }

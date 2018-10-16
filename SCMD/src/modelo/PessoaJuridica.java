@@ -4,7 +4,7 @@ package modelo;
  *
  * @author icaro
  */
-public class PessoaJuridica  extends TipoPessoa{
+public class PessoaJuridica extends TipoPessoa{
     
     private String cnpj;
     private String razaoSocial;

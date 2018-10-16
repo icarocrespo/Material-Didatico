@@ -2,41 +2,21 @@ package modelo;
 
 public abstract class Pessoa {
     
-    protected String login;
-    protected String senha;
     protected String nome;
     protected Long id;
-    protected Endereco ender;
+    protected Endereco endereco;
     protected TipoPessoa tipoPessoa;
     protected static final Float SALARIO_BASE = 3500f;
     
-    public Pessoa(String login, String senha, String nome, Long id, Endereco ender, TipoPessoa tipoPessoa) {
-        this.login = login;
-        this.senha = senha;
+    public Pessoa(String nome, Long id, Endereco endereco, TipoPessoa tipoPessoa) {
         this.nome = nome;
         this.id = id;
-        this.ender = ender;
+        this.endereco = endereco;
         this.tipoPessoa = tipoPessoa;
     }
     
     public Pessoa(){
         
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public String getNome() {
@@ -55,12 +35,12 @@ public abstract class Pessoa {
         this.id = id;
     }
 
-    public Endereco getEnder() {
-        return ender;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setEnder(Endereco ender) {
-        this.ender = ender;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public TipoPessoa getTipoPessoa() {

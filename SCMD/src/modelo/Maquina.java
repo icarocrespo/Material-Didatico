@@ -11,13 +11,15 @@ public class Maquina {
     private String softwares;
     private String conf_hardware;
     private String so;
+    private Sala sala;
 
-    public Maquina(Integer numero, Integer qtd, String softwares, String conf_hardware, String so) {
+    public Maquina(Integer numero, Integer qtd, String softwares, String conf_hardware, String so, Sala sala) {
         this.numero = numero;
         this.qtd = qtd;
         this.softwares = softwares;
         this.conf_hardware = conf_hardware;
         this.so = so;
+        this.sala = sala;
     }
     
     public Maquina(){
@@ -64,4 +66,11 @@ public class Maquina {
         this.so = so;
     }
 
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
 }

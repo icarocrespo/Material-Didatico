@@ -30,14 +30,19 @@ arquivo de solicitações. O instrutor logado deve poder listar todas as suas so
  */
 package refatorado;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import modelo.EmpregadoInformatizado;
+import modelo.Empresa;
+import modelo.Endereco;
+import modelo.Filial;
 import modelo.Gerente;
+import modelo.GerenteSuporte;
 import modelo.Instrutor;
+import modelo.Maquina;
+import modelo.Sala;
 import modelo.Solicitacao;
 import modelo.Treinamento;
 
@@ -49,14 +54,34 @@ public class Refatorado {
         Instrutor instrutor = new Instrutor();
         Treinamento treinamento = new Treinamento();
         Solicitacao solicitacao = new Solicitacao();
-
+        Sala sala = new Sala();
+        Maquina maquina = new Maquina();
+        GerenteSuporte gerenteSuporte = new GerenteSuporte();
+        EmpregadoInformatizado empregadoInformatizado = new EmpregadoInformatizado();
+        Empresa empresa = new Empresa();
+        Filial filial = new Filial();
+        Endereco endereco = new Endereco();
+        
         List<Treinamento> tlista = new ArrayList();
         List<Solicitacao> slista = new ArrayList();
-        List<Object> all = new ArrayList();
+        List<Sala> salalista = new ArrayList<>();
+        List<Maquina> mlista = new ArrayList<>();
+        List<GerenteSuporte> gslista = new ArrayList<>();
+        List<EmpregadoInformatizado> eilista = new ArrayList<>();
+        List<Empresa> emplista = new ArrayList<>();
+        List<Filial> flista = new ArrayList<>();
+        List<Endereco> endlista = new ArrayList<>();
 
+        List<Object> all = new ArrayList();
+        
         Scanner x = new Scanner(System.in);
         //switch dos fulanos
-
+        
+        Empresa empresa1 = new Empresa();
+        Empresa empresa2 = new Empresa();
+        
+        Gerente gerennte1 = new Gerente(login, senha, nome, Long.MIN_VALUE, endereco, Float.NaN, tipoPessoa, empresa, filial, Boolean.TRUE, lotacao);
+        
         System.out.println("1- Cadastrar Intrutor\n2- Resolver Solicitações\n3- Listar Instrutores\n0- Sair");
         Random random = new Random();
         instrutor = new Instrutor();
