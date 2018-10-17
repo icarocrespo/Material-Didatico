@@ -1,6 +1,8 @@
 package modelo;
 
-public abstract class Pessoa {
+import util.Comparator;
+
+public abstract class Pessoa implements Comparator{
     
     protected String nome;
     protected Long id;

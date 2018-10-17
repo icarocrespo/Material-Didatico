@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import modelo.Empregado;
 import modelo.EmpregadoInformatizado;
 import modelo.Empresa;
 import modelo.Endereco;
@@ -34,7 +35,11 @@ public class Refatorado {
         List<Empresa> emplista = new ArrayList<>();
         List<Filial> flista = new ArrayList<>();
         List<Endereco> endlista = new ArrayList<>();
-
+        List<Lotacao> llista = new ArrayList<>();
+        List<Gerente> glista = new ArrayList<>();
+        List<Estagiario> estlista = new ArrayList<>();
+        List<Empregado> empregadolista = new ArrayList<>();
+        List<Instrutor> ilista = new ArrayList<>();
         List<Object> all = new ArrayList();
 
         Scanner x = new Scanner(System.in);
@@ -60,20 +65,39 @@ public class Refatorado {
         Empresa empresa2 = new Empresa(2L, "Empresa Dois", endereco2, pj2);
         Empresa empresa3 = new Empresa(3L, "Universidade Federal do Pampa", endereco2, pj3);
 
+        emplista.add(empresa1);
+        emplista.add(empresa2);
+        emplista.add(empresa3);
+
         Filial filial1 = new Filial(empresa1, pj4);
         Filial filial2 = new Filial(empresa2, pj5);
+
+        flista.add(filial1);
+        flista.add(filial1);
 
         Lotacao lotacao1 = new Lotacao(1L, "Departamento de Ciências Exatas e da Terra", empresa2);
         Lotacao lotacao2 = new Lotacao(2L, "Departamento de Ciências Exatas e da Natureza", empresa2);
 
+        llista.add(lotacao1);
+        llista.add(lotacao2);
+
         Gerente gerente1 = new Gerente("icaro", "123", "Ícaro", 1L, endereco1, 300F, pf1, empresa1, null, true, lotacao1);
         Gerente gerente2 = new Gerente("nenekorin", "321", "Amanda", 2L, endereco1, 500F, pf2, empresa1, null, true, lotacao1);
+
+        glista.add(gerente1);
+        glista.add(gerente2);
 
         Estagiario estagiario1 = new Estagiario(400F, "Fulano", 8L, endereco3, pf4);
         Estagiario estagiario2 = new Estagiario(200F, "Ciclano", 9L, endereco3, pf4);
 
+        estlista.add(estagiario1);
+        estlista.add(estagiario2);
+
         Instrutor instrutor1 = new Instrutor("Lau", "#@#", "Lauro", 15L, endereco3, pf3, 25F, 40, empresa3, filial2, true, lotacao2);
         Instrutor instrutor2 = new Instrutor("Math", "###", "Matheus", 16L, endereco3, pf5, 25F, 40, empresa3, filial2, true, lotacao2);
+
+        ilista.add(instrutor1);
+        ilista.add(instrutor2);
 
         Treinamento treinamento1 = new Treinamento(1L, "treinamento 1", "2 meses", 10, "24/08/2018", "24/10/2018",
                 "", "", "", "", "", "", instrutor2);
@@ -82,11 +106,16 @@ public class Refatorado {
         Treinamento treinamento3 = new Treinamento(1L, "treinamento 3", "2 meses", 35, "24/10/2018", "24/12/2018",
                 "", "", "", "", "", "", instrutor1);
 
-        int opFiltro, opGeral, opCadastro;
+        tlista.add(treinamento1);
+        tlista.add(treinamento2);
+        tlista.add(treinamento3);
+
+        int opFiltro, opGeral, opCadastro, opGerenciar, controleI;
+        boolean controleB = false;
 
         do {
             opGeral = x.nextInt();
-            System.out.println("Bem vindo ao sistema.\n1- Gerenciar pessoal\n2- Gerenciar infraestrutura.");
+            System.out.println("Bem vindo ao sistema.\n1- Gerenciar pessoal\n2- Gerenciar infraestrutura\n3- Emitir relatório.");
 
             switch (opGeral) {
                 case 1:
@@ -95,13 +124,200 @@ public class Refatorado {
                         opCadastro = x.nextInt();
                         switch (opCadastro) {
                             case 1:
+                                PessoaFisica pessoaFisica = new PessoaFisica();
+                                System.out.print("Digite o seu RG: ");
+                                pessoaFisica.setRg(x.next());
+                                System.out.print("Digite o seu CPF: ");
+                                pessoaFisica.setCpf(x.next());
 
+                                GerenteSuporte gerenteSuporte = new GerenteSuporte();
+                                System.out.print("Digite o seu nome: ");
+                                gerenteSuporte.setNome(x.next());
+                                System.out.print("Digite seu login: ");
+                                
+                                String login = x.next();
+                                boolean controleLogin = false;
+                                
+                                for(GerenteSuporte gs : gslista){
+                                    if(gs.getLogin().equals(login)){
+                                        System.out.print("Este login já está em uso.");
+                                        controleLogin = true;
+                                        break;
+                                    }else{
+                                        controleLogin = false;
+                                    }
+                                }
+                                
+                                if(!controleLogin)
+                                    gerenteSuporte.setLogin(login);
+                                
+                                System.out.print("Ele está ativo? S/N: ");
+                                if (x.next().equalsIgnoreCase("S")) {
+                                    gerenteSuporte.setAtivo(true);
+                                } else {
+                                    gerenteSuporte.setAtivo(false);
+                                }
+                                System.out.print("Digite a senha: ");
+                                gerenteSuporte.setSenha(x.next());
+                                System.out.print("Digite o : ");
+                                gerenteSuporte.setTipoPessoa(pessoaFisica);
+                                gerenteSuporte.setId(15L);
+
+                                System.out.print("Digite o ID da Empresa: ");
+                                controleI = x.nextInt();
+                                Empresa e = new Empresa();
+                                for (Empresa empresa : emplista) {
+                                    if (empresa.getId() == controleI) {
+                                        gerenteSuporte.setEmpresa(empresa);
+                                        controleB = true;
+                                        e = empresa;
+                                        break;
+                                    }
+                                    controleB = false;
+                                }
+
+                                if (controleB) {
+                                    System.out.println("Empresa " + e.getNome() + "registrada ao gerente de suporte");
+                                } else {
+                                    System.out.println("Não foi possível localizar a empresa de código " + controleI);
+                                }
+                                controleI = 0;
+                                controleB = false;
+
+                                System.out.println("O gerente está ligado a alguma filial? S/N");
+                                if (x.next().equalsIgnoreCase("S")) {
+                                    controleI = x.nextInt();
+                                    Filial f = new Filial();
+                                    for (Filial filial : flista) {
+                                        if (filial.getId() == controleI && filial.getEmpresa().getId() == gerenteSuporte.getEmpresa().getId()) {
+                                            gerenteSuporte.setFilial(filial);
+                                            controleB = true;
+                                            f = filial;
+                                            break;
+                                        }
+                                        controleB = false;
+                                    }
+
+                                    if (controleB) {
+                                        System.out.println("Filial " + f.getNome() + "registrada ao gerente de suporte");
+                                    } else {
+                                        System.out.println("Não foi possível localizar a filial de código " + controleI
+                                                + "pertencente a " + gerenteSuporte.getEmpresa().getId());
+                                    }
+                                    controleI = 0;
+                                    controleB = false;
+
+                                } else {
+                                    gerenteSuporte.setFilial(null);
+                                }
                                 break;
 
                             case 2:
+                                int controleSwitch;
+                                do {
+                                    opGerenciar = x.nextInt();
+                                    System.out.println("1- Gerenciar Sala\n2- Gerenciar Máquina\n0- Sair");
+                                    switch (opGerenciar) {
+                                        case 1:
+                                            do {
+                                                System.out.println("1-Cadastrar Sala\n2-Alterar registro\n3-Deletar Sala\n"
+                                                        + "4-Listar Salas\n0- Sair");
+                                                controleSwitch = x.nextInt();
+                                                switch(controleSwitch){
+                                                case 1:
+                                                    Sala sala = new Sala();
+                                                    System.out.println("Informe os dados abaixo.");
+                                                    sala.setId(20L);
+                                                    sala.setMaquinas(null);
+                                                    System.out.print("Digite o nome: ");
+                                                    sala.setNome(x.next());
+                                                    System.out.print("Digite o número da sala: ");
+                                                    sala.setNumero(x.nextInt());
+                                                    salalista.add(sala);
+                                                    break;
+                                                }
+                                            } while (controleSwitch != 0);
+                                            break;
 
+                                        case 2:
+                                            do {
+                                                System.out.println("1-Cadastrar Maquina\n2-Alterar Maquina\n3-Deletar Maquina\n"
+                                                        + "4-Listar Maquinas\n0- Sair");
+                                                controleSwitch = x.nextInt();
+                                                switch(controleSwitch){
+                                                case 1:
+                                                    Maquina maquina = new Maquina();
+                                                    System.out.println("Informe os dados abaixo.");
+                                                    maquina.setNumero(20);
+                                                    System.out.print("Configuração do hardware: ");
+                                                    maquina.setConf_hardware(x.next());
+                                                    System.out.print("Digite a quantidade: ");
+                                                    maquina.setQtd(x.nextInt());
+                                                    System.out.print("Digite o número da sala: ");
+                                                    maquina.setNumero(x.nextInt());
+                                                    System.out.println("Digite o Sistema");
+                                                    maquina.setSo(x.next());
+                                                    System.out.println("Digite os Softwares");
+                                                    maquina.setSoftwares(x.next());
+                                                    mlista.add(maquina);
+                                                    break;
+                                                }
+                                            } while (controleSwitch != 0);
+                                            break;
+
+                                        default:
+
+                                            break;
+
+                                    }
+                                } while (opGerenciar != 0);
                                 break;
-
+                                
+                            case 3: 
+                                do{
+                                    System.out.println("1- GerenteSuporte\n2- Instrutor\n3- Gerente\n4- Estagiario\n0- Sair");
+                                    opGerenciar = x.nextInt();
+                                    
+                                    switch(opGerenciar){
+                                        case 1:
+                                            System.out.println("Relatório:");
+                                            for (GerenteSuporte gs : gslista) {
+                                                gs.toString();
+                                                System.out.println("");
+                                            }
+                                            
+                                            break;
+                                        
+                                        case 2:
+                                            System.out.println("Relatório:");
+                                            for (Instrutor i : ilista) {
+                                                i.toString();
+                                                System.out.println("");
+                                            }
+                                            break;
+                                        
+                                        case 3:
+                                            System.out.println("Relatório:");
+                                            for (Gerente g : glista) {
+                                                g.toString();
+                                                System.out.println("");
+                                            }
+                                            break;
+                                         
+                                        case 4:
+                                            System.out.println("Relatório:");
+                                            for (Estagiario estagiario : estlista) {
+                                                estagiario.toString();
+                                                System.out.println("");
+                                            }
+                                            break;
+                                        
+                                        default:
+                                            break;
+                                    }
+                                    
+                                }while(opGerenciar != 0);
+                                break;
                             default:
 
                                 break;
