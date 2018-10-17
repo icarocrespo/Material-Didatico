@@ -10,6 +10,19 @@ public class Solicitacao {
     private Date data;
     private String motivoAlteracao;
 
+    public Solicitacao(Long id, Instrutor instrutor, Treinamento treinamento, Boolean status, Date data, String motivoAlteracao) {
+        this.id = id;
+        this.instrutor = instrutor;
+        this.treinamento = treinamento;
+        this.status = status;
+        this.data = data;
+        this.motivoAlteracao = motivoAlteracao;
+    }
+
+    public Solicitacao(){
+    
+    }
+    
     public Long getId() {
         return id;
     }

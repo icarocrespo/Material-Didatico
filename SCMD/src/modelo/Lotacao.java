@@ -28,6 +28,12 @@ public class Lotacao {
         this.empresa = empresa;
         this.empregados = empregados;
     }
+    
+    public Lotacao(Long id, String nome, Empresa empresa) {
+        this.id = id;
+        this.nome = nome;
+        this.empresa = empresa;
+    }
 
     public Lotacao(){
     

@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package util;
 
 /**
  *
  * @author icaro
  */
-public class GerarFicha {
-    
+public abstract class GerarFicha {
+
+    public abstract void printAtivo(Boolean ativo);
+
 }

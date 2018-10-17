@@ -15,6 +15,27 @@ public class Treinamento {
     private String path_instalacao;
     private String path_setup;
     private Instrutor instrutor;
+
+    public Treinamento(Long id, String nome, String duracao, Integer num_alunos, String instrutor_nome, String inicio, String fim, String path_apostila, String path_slides, String path_equipNecessario, String path_softwares, String path_instalacao, String path_setup, Instrutor instrutor) {
+        this.id = id;
+        this.nome = nome;
+        this.duracao = duracao;
+        this.num_alunos = num_alunos;
+        this.instrutor_nome = instrutor_nome;
+        this.inicio = inicio;
+        this.fim = fim;
+        this.path_apostila = path_apostila;
+        this.path_slides = path_slides;
+        this.path_equipNecessario = path_equipNecessario;
+        this.path_softwares = path_softwares;
+        this.path_instalacao = path_instalacao;
+        this.path_setup = path_setup;
+        this.instrutor = instrutor;
+    }
+    
+    public Treinamento(){
+    
+    }
     
     public Long getId() {
         return id;
