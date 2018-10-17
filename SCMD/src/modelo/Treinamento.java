@@ -5,7 +5,6 @@ public class Treinamento {
     private String nome;
     private String duracao; 
     private Integer num_alunos;
-    private String instrutor_nome;
     private String inicio;
     private String fim;
     private String path_apostila;
@@ -16,12 +15,11 @@ public class Treinamento {
     private String path_setup;
     private Instrutor instrutor;
 
-    public Treinamento(Long id, String nome, String duracao, Integer num_alunos, String instrutor_nome, String inicio, String fim, String path_apostila, String path_slides, String path_equipNecessario, String path_softwares, String path_instalacao, String path_setup, Instrutor instrutor) {
+    public Treinamento(Long id, String nome, String duracao, Integer num_alunos, String inicio, String fim, String path_apostila, String path_slides, String path_equipNecessario, String path_softwares, String path_instalacao, String path_setup, Instrutor instrutor) {
         this.id = id;
         this.nome = nome;
         this.duracao = duracao;
         this.num_alunos = num_alunos;
-        this.instrutor_nome = instrutor_nome;
         this.inicio = inicio;
         this.fim = fim;
         this.path_apostila = path_apostila;
@@ -68,15 +66,7 @@ public class Treinamento {
     public void setNum_alunos(Integer num_alunos) {
         this.num_alunos = num_alunos;
     }
-
-    public String getInstrutor_nome() {
-        return instrutor_nome;
-    }
-
-    public void setInstrutor_nome(String instrutor_nome) {
-        this.instrutor_nome = instrutor_nome;
-    }
-
+    
     public String getInicio() {
         return inicio;
     }
@@ -154,7 +144,7 @@ public class Treinamento {
     @Override
     public String toString() {
         return id.toString() + "&" + nome + "&" + duracao + "&" + num_alunos.toString() + 
-                "&" + instrutor_nome + "&" + inicio + "&" + fim + "&" + path_apostila + 
+                "&" + inicio + "&" + fim + "&" + path_apostila + 
                 "&" + path_slides + "&" + path_equipNecessario + "&" + path_softwares + 
                 "&" + path_instalacao + "&" + path_setup + "&" + instrutor.getNome();
     }
