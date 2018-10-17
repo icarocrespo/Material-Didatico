@@ -1,33 +1,3 @@
-/*
-    Descrição da necessidade do sistema: Fazem uso deste sistema o instrutor e o gerente de treinamento da empresa. 
-Os usuários devem acessar o sistema a fim de alimentar e buscar informações sobre o material didático dos treinamentos. 
-O gerente de treinamento e o instrutor devem acessar o sistema (com usuário e senha). 
-Somente o gerente pode criar um banco de dados (um conjunto de arquivos texto) para guardar os dados de um material didático de um determinado
-treinamento e também pode cadastrar instrutores. 
-
-    O treinamento é composto pelos seguintes dados: nome do treinamento, carga horária, número máximo de alunos, valor, data de início, data final, 
-instrutor responsável, o caminho absoluto (path) do arquivo textual compactado da apostila, caminho absoluto (path) do arquivo compactado 
-com slides do curso, caminho absoluto (path) arquivo compactado com uma documentação relatando o tipo de equipamento necessário para realizar o curso, 
-caminho absoluto (path) do arquivo de softwares necessários, bem como o caminho absoluto (path) do procedimento de instalação dos mesmos nos 
-respectivos equipamentos, caminho absoluto (path) do arquivo compactado com o setup do curso. 
-
-    A criação e alteração de um banco de dados para um treinamento somente será feita pelo gerente (só ele pode criar/alterar). 
-Já o instrutor pode acessá-lo, já que ele tem acesso para leitura dos registros no arquivo de treinamentos. 
-Deve existir uma checagem automática no momento que o gerente está cadastrando um registro do treinamento para que o mesmo forneça ao menos 
-o path do arquivo da apostila, path dos slides do curso, e o path dos documento de configuração do ambiente, a data de início e fim, 
-o instrutor responsável e o nome do treinamento. Caso o gerente não forneça estes dados, a operação para o cadastro do treinamento 
-deve ser cancelada, retornando para a tela de registro. 
-
-    O instrutor, ao acessar o sistema, visualizará uma lista de treinamentos cadastrados cujo seu nome constar no treinamento. 
-Não é permitido apresentar treinamentos que não são de propriedade de um instrutor. 
-
-    Caso seja necessário atualizar ou alterar algum dado de um treinamento, 
-o instrutor deverá solicitar ao gerente de treinamentos a alteração deste material. Assim, deve-se manter um arquivo com solicitações de alteração como: 
-data da solicitação, nome do instrutor, o nome do curso cujo material didático é requisitado para alteração e o status da solicitação 
-(em aberto ou resolvida). Assim, o gerente quando loga no sistema deve ter disponível um item de menu para acessar as 
-solicitações com status em aberto. Uma vez que o gerente resolveu a solicitação, ele deve marcar a solicitação como resolvida no 
-arquivo de solicitações. O instrutor logado deve poder listar todas as suas solicitações que estão resolvidas ou que estão em aberto.
- */
 package refatorado;
 
 import java.util.ArrayList;
@@ -42,8 +12,11 @@ import modelo.Gerente;
 import modelo.GerenteSuporte;
 import modelo.Instrutor;
 import modelo.Maquina;
+import modelo.PessoaFisica;
+import modelo.PessoaJuridica;
 import modelo.Sala;
 import modelo.Solicitacao;
+import modelo.TipoPessoa;
 import modelo.Treinamento;
 
 public class Refatorado {
@@ -77,10 +50,21 @@ public class Refatorado {
         Scanner x = new Scanner(System.in);
         //switch dos fulanos
         
-        Empresa empresa1 = new Empresa();
-        Empresa empresa2 = new Empresa();
+        PessoaJuridica pj = new PessoaJuridica();
+        PessoaFisica pf = new PessoaFisica();
         
-        Gerente gerennte1 = new Gerente(login, senha, nome, Long.MIN_VALUE, endereco, Float.NaN, tipoPessoa, empresa, filial, Boolean.TRUE, lotacao);
+        TipoPessoa tp = new PessoaFisica();
+        
+        tp.
+        Endereco endereco1 = new Endereco("97645-340", "Ibirapuitã", "João Pedro de Souza", 383);
+        Endereco endereco2 = new Endereco("97546-000", "Ibirapuitã", "Ibicuí", 400);
+        
+        Empresa empresa1 = new Empresa(1, "Empresa Um", endereco1, tipoPessoa1);
+        Empresa empresa2 = new Empresa(2, "Empresa Dois", endereco2, tipoPessoa2);
+        
+        Filial filial1 = new Filial(tipoPessoa);
+        Filial filial2 = new Filial();
+        Gerente gerente1 = new Gerente("icaro", "123", "Ícaro", 1, endereco1, Float.NaN, tipoPessoa, empresa1, null, true, lotacao);
         
         System.out.println("1- Cadastrar Intrutor\n2- Resolver Solicitações\n3- Listar Instrutores\n0- Sair");
         Random random = new Random();

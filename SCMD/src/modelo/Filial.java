@@ -6,11 +6,24 @@ package modelo;
  */
 public class Filial extends Pessoa{
     
-    public Filial(TipoPessoa tipoPessoa){
+    private Empresa empresa;
+    
+    public Filial(Empresa empresa, TipoPessoa tipoPessoa){
         this.tipoPessoa = new PessoaJuridica();
+        this.empresa = empresa;
     }
     
     public Filial(){
         this.tipoPessoa = new PessoaJuridica();
     }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+    
+    
 }

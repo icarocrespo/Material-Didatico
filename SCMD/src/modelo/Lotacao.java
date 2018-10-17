@@ -21,6 +21,13 @@ public class Lotacao {
         this.filial = filial;
         this.empregados = empregados;
     }
+    
+    public Lotacao(Long id, String nome, Empresa empresa, List<Empregado> empregados) {
+        this.id = id;
+        this.nome = nome;
+        this.empresa = empresa;
+        this.empregados = empregados;
+    }
 
     public Lotacao(){
     
