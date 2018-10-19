@@ -19,8 +19,8 @@ public abstract class Empregado extends Pessoa {
     protected Lotacao lotacao;
 
     public Empregado(String nome, Long id, Endereco endereco, TipoPessoa tipoPessoa, String login, String senha, 
-            Empresa empresa, Filial filial, Boolean ativo, Lotacao lotacao) {
-        super(nome, id, endereco, tipoPessoa);
+            Empresa empresa, Filial filial, Boolean ativo, Lotacao lotacao, Acesso acesso) {
+        super(nome, id, endereco, tipoPessoa, acesso);
         this.login = login;
         this.senha = senha;
         this.tipoPessoa = new PessoaFisica();

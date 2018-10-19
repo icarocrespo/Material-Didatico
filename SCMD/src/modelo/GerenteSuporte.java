@@ -9,8 +9,8 @@ public class GerenteSuporte extends Empregado{
     private Float comissao;
 
     public GerenteSuporte(Float comissao, String nome, Long id, Endereco endereco, TipoPessoa tipoPessoa, 
-            String login, String senha, Empresa empresa, Filial filial, Boolean ativo, Lotacao lotacao) {
-        super(nome, id, endereco, tipoPessoa, login, senha, empresa, filial, ativo, lotacao);
+            String login, String senha, Empresa empresa, Filial filial, Boolean ativo, Lotacao lotacao, Acesso acesso) {
+        super(nome, id, endereco, tipoPessoa, login, senha, empresa, filial, ativo, lotacao, acesso);
         this.comissao = comissao;
     }
 

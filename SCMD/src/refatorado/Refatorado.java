@@ -2,7 +2,6 @@ package refatorado;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 import modelo.Empregado;
 import modelo.EmpregadoInformatizado;
@@ -114,8 +113,8 @@ public class Refatorado {
         boolean controleB = false;
 
         do {
-            opGeral = x.nextInt();
             System.out.println("Bem vindo ao sistema.\n1- Gerenciar pessoal\n2- Gerenciar infraestrutura\n3- Emitir relatório.");
+            opGeral = x.nextInt();
 
             switch (opGeral) {
                 case 1:

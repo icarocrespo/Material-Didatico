@@ -6,8 +6,8 @@ public class Instrutor extends Empregado{
     private Integer numeroHoras;
     
     public Instrutor(String login, String senha, String nome, Long id, Endereco endereco, TipoPessoa tipoPessoa,
-            Float valorHora, Integer numeroHoras, Empresa empresa, Filial filial, Boolean ativo, Lotacao lotacao) {
-        super(nome, id, endereco, tipoPessoa, login, senha, empresa, filial, ativo, lotacao);
+            Float valorHora, Integer numeroHoras, Empresa empresa, Filial filial, Boolean ativo, Lotacao lotacao, Acesso acesso) {
+        super(nome, id, endereco, tipoPessoa, login, senha, empresa, filial, ativo, lotacao, acesso);
         this.valorHora = valorHora;
         this.numeroHoras = numeroHoras;
     }
