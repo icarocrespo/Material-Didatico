@@ -13,11 +13,13 @@ import modelo.Estagiario;
 import modelo.Filial;
 import modelo.Gerente;
 import modelo.GerenteSuporte;
+import modelo.Historico;
 import modelo.Instrutor;
 import modelo.Lotacao;
 import modelo.Maquina;
 import modelo.PessoaFisica;
 import modelo.PessoaJuridica;
+import modelo.Registro;
 import modelo.Sala;
 import modelo.Sexo;
 import modelo.Solicitacao;
@@ -43,6 +45,7 @@ public class Main {
         List<Empregado> empregadolista = new ArrayList<>();
         List<Instrutor> ilista = new ArrayList<>();
         List<Object> all = new ArrayList();
+        Historico historico = new Historico();
 
         Scanner x = new Scanner(System.in);
         //switch dos fulanos
@@ -230,9 +233,15 @@ public class Main {
                                 Date admi = new Date(x.next());
                                 gerenteSuporte.setAniversario(aniver);
                                 gerenteSuporte.setAdmissao(admi);
+                                Registro registro = new Registro();
                                 try{
                                     gslista.add(gerenteSuporte);
                                     System.out.println("Gerente de suporte adicionado com sucesso");
+                                    registro.setCriacao(new Date("19/10/2018"));
+                                    registro.setAlteracao(null);
+                                    registro.setEmpregado(gerenteSuporte);
+                                    registro.setId(1L);
+                                    historico.setRegistro(registro);
                                 }catch(Exception exception){
                                     System.out.println("Erro ao adicionar gerente de suporte");
                                 }
@@ -364,7 +373,6 @@ public class Main {
             case 1:
                 System.out.println("1-");
                 break;
-            case:
         }
     }
     
