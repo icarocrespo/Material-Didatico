@@ -8,8 +8,8 @@ public class Estagiario extends Pessoa{
     
     private Float bolsa;
 
-    public Estagiario(Float bolsa, String nome, Long id, Endereco endereco, TipoPessoa tipoPessoa, Acesso acesso) {
-        super(nome, id, endereco, tipoPessoa, acesso);
+    public Estagiario(Float bolsa, String nome, Long id, Endereco endereco, TipoPessoa tipoPessoa) {
+        super(nome, id, endereco, tipoPessoa);
         this.bolsa = bolsa;
     }
 

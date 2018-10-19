@@ -17,10 +17,11 @@ public abstract class Empregado extends Pessoa {
     protected Date admissao;
     protected Date aniversario;
     protected Lotacao lotacao;
+    protected Acesso acesso;
 
-    public Empregado(String nome, Long id, Endereco endereco, TipoPessoa tipoPessoa, String login, String senha, 
+    public Empregado(String nome, Long id, Endereco endereco, TipoPessoa tipoPessoa, String login, String senha,
             Empresa empresa, Filial filial, Boolean ativo, Lotacao lotacao, Acesso acesso) {
-        super(nome, id, endereco, tipoPessoa, acesso);
+        super(nome, id, endereco, tipoPessoa);
         this.login = login;
         this.senha = senha;
         this.tipoPessoa = new PessoaFisica();
@@ -72,6 +73,38 @@ public abstract class Empregado extends Pessoa {
 
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
+    }
+
+    public Date getAdmissao() {
+        return admissao;
+    }
+
+    public void setAdmissao(Date admissao) {
+        this.admissao = admissao;
+    }
+
+    public Date getAniversario() {
+        return aniversario;
+    }
+
+    public void setAniversario(Date aniversario) {
+        this.aniversario = aniversario;
+    }
+
+    public Lotacao getLotacao() {
+        return lotacao;
+    }
+
+    public void setLotacao(Lotacao lotacao) {
+        this.lotacao = lotacao;
+    }
+
+    public Acesso getAcesso() {
+        return acesso;
+    }
+
+    public void setAcesso(Acesso acesso) {
+        this.acesso = acesso;
     }
 
     public abstract Float calculaSalario();

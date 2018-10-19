@@ -1,8 +1,10 @@
-package refatorado;
+package main;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import modelo.Acesso;
 import modelo.Empregado;
 import modelo.EmpregadoInformatizado;
 import modelo.Empresa;
@@ -17,11 +19,12 @@ import modelo.Maquina;
 import modelo.PessoaFisica;
 import modelo.PessoaJuridica;
 import modelo.Sala;
+import modelo.Sexo;
 import modelo.Solicitacao;
 import modelo.TipoPessoa;
 import modelo.Treinamento;
 
-public class Refatorado {
+public class Main {
 
     public static void main(String[] args) {
 
@@ -43,13 +46,23 @@ public class Refatorado {
 
         Scanner x = new Scanner(System.in);
         //switch dos fulanos
-
-        PessoaFisica pf1 = new PessoaFisica("5116933978", "04310670075");
-        PessoaFisica pf2 = new PessoaFisica("0000", "0000-0");
-        PessoaFisica pf3 = new PessoaFisica("414141", "01111");
-        PessoaFisica pf4 = new PessoaFisica("77777", "5555");
-        PessoaFisica pf5 = new PessoaFisica("323436", "908678-0");
-
+        Date aniversario = new Date("28/12/1999");
+        Date admissao = new Date("10/10/2018");
+        
+        PessoaFisica pf1 = new PessoaFisica("5116933978", "04310670075", Sexo.MASCULINO, aniversario, admissao);
+        aniversario = new Date("14/05/1994");
+        admissao = new Date("08/07/1990");
+        PessoaFisica pf2 = new PessoaFisica("0000", "0000-0", Sexo.FEMININO, aniversario, admissao);
+        aniversario = new Date("04/04/2000");
+        admissao = new Date("08/07/1996");
+        PessoaFisica pf3 = new PessoaFisica("414141", "01111", Sexo.MASCULINO, aniversario, admissao);
+        aniversario = new Date("04/04/2010");
+        admissao = new Date("08/09/1991");
+        PessoaFisica pf4 = new PessoaFisica("77777", "5555", Sexo.OUTRO, aniversario, admissao);
+        aniversario = new Date("04/04/2004");
+        admissao = new Date("08/07/1996");
+        PessoaFisica pf5 = new PessoaFisica("323436", "908678-0", Sexo.FEMININO, aniversario, admissao);
+        
         PessoaJuridica pj1 = new PessoaJuridica("01010/9", "Razao Social 1");
         PessoaJuridica pj2 = new PessoaJuridica("11010/7", "Razao Social 2");
         PessoaJuridica pj3 = new PessoaJuridica("11010/4", "Razao Social 3");
@@ -80,8 +93,8 @@ public class Refatorado {
         llista.add(lotacao1);
         llista.add(lotacao2);
 
-        Gerente gerente1 = new Gerente("icaro", "123", "Ícaro", 1L, endereco1, 300F, pf1, empresa1, null, true, lotacao1);
-        Gerente gerente2 = new Gerente("nenekorin", "321", "Amanda", 2L, endereco1, 500F, pf2, empresa1, null, true, lotacao1);
+        Gerente gerente1 = new Gerente("icaro", "123", "Ícaro", 1L, endereco1, 300F, pf1, empresa1, null, true, lotacao1, Acesso.GERENTE);
+        Gerente gerente2 = new Gerente("nenekorin", "321", "Amanda", 2L, endereco1, 500F, pf2, empresa1, null, true, lotacao1, Acesso.GERENTE);
 
         glista.add(gerente1);
         glista.add(gerente2);
@@ -92,8 +105,8 @@ public class Refatorado {
         estlista.add(estagiario1);
         estlista.add(estagiario2);
 
-        Instrutor instrutor1 = new Instrutor("Lau", "#@#", "Lauro", 15L, endereco3, pf3, 25F, 40, empresa3, filial2, true, lotacao2);
-        Instrutor instrutor2 = new Instrutor("Math", "###", "Matheus", 16L, endereco3, pf5, 25F, 40, empresa3, filial2, true, lotacao2);
+        Instrutor instrutor1 = new Instrutor("Lau", "#@#", "Lauro", 15L, endereco3, pf3, 25F, 40, empresa3, filial2, true, lotacao2, Acesso.INSTRUTOR);
+        Instrutor instrutor2 = new Instrutor("Math", "###", "Matheus", 16L, endereco3, pf5, 25F, 40, empresa3, filial2, true, lotacao2, Acesso.INSTRUTOR);
 
         ilista.add(instrutor1);
         ilista.add(instrutor2);
@@ -119,7 +132,7 @@ public class Refatorado {
             switch (opGeral) {
                 case 1:
                     do {
-                        System.out.println("Você deseja:\n1- Adicionar gerente de suporte");
+                        System.out.println("Você deseja:\n1- Adicionar gerente de suporte\n0- Sair");
                         opCadastro = x.nextInt();
                         switch (opCadastro) {
                             case 1:
@@ -210,7 +223,14 @@ public class Refatorado {
                                     gerenteSuporte.setFilial(null);
                                 }
                                 break;
-
+                                gerenteSuporte.setAcesso(Acesso.GERENTE);
+                                System.out.print("Informe a data de nascimento: ");
+                                Date aniver = new Date(x.next());
+                                System.out.println("Informe a data de admissão ");
+                                Date admi = new Date(x.next());
+                                gerenteSuporte.setAniversario(aniver);
+                                gerenteSuporte.setAdmissao(admi);
+                                
                             case 2:
                                 int controleSwitch;
                                 do {

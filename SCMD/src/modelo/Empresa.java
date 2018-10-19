@@ -7,8 +7,8 @@ package modelo;
 public class Empresa extends Pessoa {
 
     
-    public Empresa(Long id, String nome, Endereco endereco, TipoPessoa tipoPessoa, Acesso acesso) {
-        super(nome, id, endereco, tipoPessoa, acesso);
+    public Empresa(Long id, String nome, Endereco endereco, TipoPessoa tipoPessoa) {
+        super(nome, id, endereco, tipoPessoa);
         super.tipoPessoa = new PessoaJuridica();
         
     }    
