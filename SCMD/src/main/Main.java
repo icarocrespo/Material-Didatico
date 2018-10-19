@@ -132,7 +132,8 @@ public class Main {
             switch (opGeral) {
                 case 1:
                     do {
-                        System.out.println("Você deseja:\n1- Adicionar gerente de suporte\n0- Sair");
+                        System.out.println("Você deseja:\n1- Adicionar gerente de suporte\n2- Adicionar gerente"
+                                + "\n3- Adicionar Instrutor\n4- Adicionar \n0- Sair");
                         opCadastro = x.nextInt();
                         switch (opCadastro) {
                             case 1:
@@ -221,8 +222,7 @@ public class Main {
 
                                 } else {
                                     gerenteSuporte.setFilial(null);
-                                }
-                                break;
+                                }                                
                                 gerenteSuporte.setAcesso(Acesso.GERENTE);
                                 System.out.print("Informe a data de nascimento: ");
                                 Date aniver = new Date(x.next());
@@ -230,7 +230,13 @@ public class Main {
                                 Date admi = new Date(x.next());
                                 gerenteSuporte.setAniversario(aniver);
                                 gerenteSuporte.setAdmissao(admi);
-                                
+                                try{
+                                    gslista.add(gerenteSuporte);
+                                    System.out.println("Gerente de suporte adicionado com sucesso");
+                                }catch(Exception exception){
+                                    System.out.println("Erro ao adicionar gerente de suporte");
+                                }
+                                break;
                             case 2:
                                 int controleSwitch;
                                 do {
@@ -351,5 +357,26 @@ public class Main {
                     break;
             }
         } while (opGeral != 0);
+    }
+    
+    public void menuGerente(int op){
+        switch(op){
+            case 1:
+                System.out.println("1-");
+                break;
+            case:
+        }
+    }
+    
+    public void menuGerenteSuporte(int op){
+
+    }
+    
+    public void menuInstrutor(int op){
+    
+    }
+    
+    public void menuDefault(int op){
+    
     }
 }
