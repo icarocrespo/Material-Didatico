@@ -1,6 +1,5 @@
 package modelo;
 
-import util.Comparator;
 
 public abstract class Pessoa{
     

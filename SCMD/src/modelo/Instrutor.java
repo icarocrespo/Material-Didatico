@@ -1,9 +1,13 @@
 package modelo;
 
+import java.util.List;
+
 public class Instrutor extends Empregado{
 
     private Float valorHora;
     private Integer numeroHoras;
+    private List<Solicitacao> solicitacoes;
+    private List<Treinamento> treinamentos;
     
     public Instrutor(String login, String senha, String nome, Long id, Endereco endereco, TipoPessoa tipoPessoa,
             Float valorHora, Integer numeroHoras, Empresa empresa, Filial filial, Boolean ativo, Lotacao lotacao, Acesso acesso) {

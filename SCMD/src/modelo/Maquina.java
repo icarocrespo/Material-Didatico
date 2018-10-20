@@ -9,7 +9,7 @@ public class Maquina {
     private Integer numero;
     private Integer qtd;
     private String softwares;
-    private String conf_hardware;
+    private String confHardware;
     private String so;
     private Sala sala;
 
@@ -17,7 +17,7 @@ public class Maquina {
         this.numero = numero;
         this.qtd = qtd;
         this.softwares = softwares;
-        this.conf_hardware = conf_hardware;
+        this.confHardware = conf_hardware;
         this.so = so;
         this.sala = sala;
     }
@@ -51,11 +51,11 @@ public class Maquina {
     }
 
     public String getConf_hardware() {
-        return conf_hardware;
+        return confHardware;
     }
 
     public void setConf_hardware(String conf_hardware) {
-        this.conf_hardware = conf_hardware;
+        this.confHardware = conf_hardware;
     }
 
     public String getSo() {

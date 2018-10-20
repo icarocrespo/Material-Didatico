@@ -25,6 +25,7 @@ import modelo.Sexo;
 import modelo.Solicitacao;
 import modelo.TipoPessoa;
 import modelo.Treinamento;
+import util.OrderByAdmissao;
 
 public class Main {
 
@@ -51,7 +52,7 @@ public class Main {
         //switch dos fulanos
         Date aniversario = new Date("28/12/1999");
         Date admissao = new Date("10/10/2018");
-        
+
         PessoaFisica pf1 = new PessoaFisica("5116933978", "04310670075", Sexo.MASCULINO, aniversario, admissao);
         aniversario = new Date("14/05/1994");
         admissao = new Date("08/07/1990");
@@ -65,7 +66,7 @@ public class Main {
         aniversario = new Date("04/04/2004");
         admissao = new Date("08/07/1996");
         PessoaFisica pf5 = new PessoaFisica("323436", "908678-0", Sexo.FEMININO, aniversario, admissao);
-        
+
         PessoaJuridica pj1 = new PessoaJuridica("01010/9", "Razao Social 1");
         PessoaJuridica pj2 = new PessoaJuridica("11010/7", "Razao Social 2");
         PessoaJuridica pj3 = new PessoaJuridica("11010/4", "Razao Social 3");
@@ -97,19 +98,47 @@ public class Main {
         llista.add(lotacao2);
 
         Gerente gerente1 = new Gerente("icaro", "123", "Ícaro", 1L, endereco1, 300F, pf1, empresa1, null, true, lotacao1, Acesso.GERENTE);
+        Registro registro1 = new Registro();
+        registro1.setAlteracao("Inicial");
+        registro1.setCriacao(new Date("20/10/1990"));
+        registro1.setId(3L);
+        registro1.setEmpregado(gerente1);
+        historico.add(registro1);
         Gerente gerente2 = new Gerente("nenekorin", "321", "Amanda", 2L, endereco1, 500F, pf2, empresa1, null, true, lotacao1, Acesso.GERENTE);
+        Registro registro2 = new Registro();
+        registro2.setAlteracao("Inicial");
+        registro2.setCriacao(new Date("20/10/1990"));
+        registro2.setId(7L);
+        registro2.setEmpregado(gerente2);
+        historico.add(registro2);
 
         glista.add(gerente1);
         glista.add(gerente2);
-
+        glista.sort(new OrderByAdmissao());
         Estagiario estagiario1 = new Estagiario(400F, "Fulano", 8L, endereco3, pf4);
+
         Estagiario estagiario2 = new Estagiario(200F, "Ciclano", 9L, endereco3, pf4);
 
         estlista.add(estagiario1);
         estlista.add(estagiario2);
 
         Instrutor instrutor1 = new Instrutor("Lau", "#@#", "Lauro", 15L, endereco3, pf3, 25F, 40, empresa3, filial2, true, lotacao2, Acesso.INSTRUTOR);
+        
+        Registro registro3 = new Registro();
+        registro3.setAlteracao("Inicial");
+        registro3.setCriacao(new Date("20/10/1990"));
+        registro3.setId(7L);
+        registro3.setEmpregado(instrutor1);
+        historico.add(registro3);
+        
         Instrutor instrutor2 = new Instrutor("Math", "###", "Matheus", 16L, endereco3, pf5, 25F, 40, empresa3, filial2, true, lotacao2, Acesso.INSTRUTOR);
+        
+        Registro registro4 = new Registro();
+        registro4.setAlteracao("Inicial");
+        registro4.setCriacao(new Date("23/10/1990"));
+        registro4.setId(10L);
+        registro4.setEmpregado(instrutor2);
+        historico.add(registro4);
 
         ilista.add(instrutor1);
         ilista.add(instrutor2);
@@ -129,14 +158,14 @@ public class Main {
         boolean controleB = false;
 
         do {
-            System.out.println("Bem vindo ao sistema.\n1- Gerenciar pessoal\n2- Gerenciar infraestrutura\n3- Emitir relatório.");
+            System.out.println("Bem vindo ao sistema.\n1- Gerenciar pessoal\n2- Emitir Relatório de pessoal\n3-Gerenciar infraestrutura\n4- Emitir relatório.");
             opGeral = x.nextInt();
 
             switch (opGeral) {
                 case 1:
                     do {
                         System.out.println("Você deseja:\n1- Adicionar gerente de suporte\n2- Adicionar gerente"
-                                + "\n3- Adicionar Instrutor\n4- Adicionar \n0- Sair");
+                                + "\n3- Adicionar Instrutor\n4- Adicionar Estagiario \n0- Sair");
                         opCadastro = x.nextInt();
                         switch (opCadastro) {
                             case 1:
@@ -150,23 +179,24 @@ public class Main {
                                 System.out.print("Digite o seu nome: ");
                                 gerenteSuporte.setNome(x.next());
                                 System.out.print("Digite seu login: ");
-                                
+
                                 String login = x.next();
                                 boolean controleLogin = false;
-                                
-                                for(GerenteSuporte gs : gslista){
-                                    if(gs.getLogin().equals(login)){
+
+                                for (GerenteSuporte gs : gslista) {
+                                    if (gs.getLogin().equals(login)) {
                                         System.out.print("Este login já está em uso.");
                                         controleLogin = true;
                                         break;
-                                    }else{
+                                    } else {
                                         controleLogin = false;
                                     }
                                 }
-                                
-                                if(!controleLogin)
+
+                                if (!controleLogin) {
                                     gerenteSuporte.setLogin(login);
-                                
+                                }
+
                                 System.out.print("Ele está ativo? S/N: ");
                                 if (x.next().equalsIgnoreCase("S")) {
                                     gerenteSuporte.setAtivo(true);
@@ -225,7 +255,7 @@ public class Main {
 
                                 } else {
                                     gerenteSuporte.setFilial(null);
-                                }                                
+                                }
                                 gerenteSuporte.setAcesso(Acesso.GERENTE);
                                 System.out.print("Informe a data de nascimento: ");
                                 Date aniver = new Date(x.next());
@@ -234,16 +264,17 @@ public class Main {
                                 gerenteSuporte.setAniversario(aniver);
                                 gerenteSuporte.setAdmissao(admi);
                                 Registro registro = new Registro();
-                                try{
+                                try {
                                     gslista.add(gerenteSuporte);
                                     System.out.println("Gerente de suporte adicionado com sucesso");
                                     registro.setCriacao(new Date("19/10/2018"));
-                                    registro.setAlteracao(null);
+                                    registro.setAlteracao("Inicial");
                                     registro.setEmpregado(gerenteSuporte);
                                     registro.setId(1L);
                                     historico.setRegistro(registro);
-                                }catch(Exception exception){
+                                } catch (Exception exception) {
                                     System.out.println("Erro ao adicionar gerente de suporte");
+                                    System.out.println(exception.toString());
                                 }
                                 break;
                             case 2:
@@ -257,18 +288,18 @@ public class Main {
                                                 System.out.println("1-Cadastrar Sala\n2-Alterar registro\n3-Deletar Sala\n"
                                                         + "4-Listar Salas\n0- Sair");
                                                 controleSwitch = x.nextInt();
-                                                switch(controleSwitch){
-                                                case 1:
-                                                    Sala sala = new Sala();
-                                                    System.out.println("Informe os dados abaixo.");
-                                                    sala.setId(20L);
-                                                    sala.setMaquinas(null);
-                                                    System.out.print("Digite o nome: ");
-                                                    sala.setNome(x.next());
-                                                    System.out.print("Digite o número da sala: ");
-                                                    sala.setNumero(x.nextInt());
-                                                    salalista.add(sala);
-                                                    break;
+                                                switch (controleSwitch) {
+                                                    case 1:
+                                                        Sala sala = new Sala();
+                                                        System.out.println("Informe os dados abaixo.");
+                                                        sala.setId(20L);
+                                                        sala.setMaquinas(null);
+                                                        System.out.print("Digite o nome: ");
+                                                        sala.setNome(x.next());
+                                                        System.out.print("Digite o número da sala: ");
+                                                        sala.setNumero(x.nextInt());
+                                                        salalista.add(sala);
+                                                        break;
                                                 }
                                             } while (controleSwitch != 0);
                                             break;
@@ -278,23 +309,23 @@ public class Main {
                                                 System.out.println("1-Cadastrar Maquina\n2-Alterar Maquina\n3-Deletar Maquina\n"
                                                         + "4-Listar Maquinas\n0- Sair");
                                                 controleSwitch = x.nextInt();
-                                                switch(controleSwitch){
-                                                case 1:
-                                                    Maquina maquina = new Maquina();
-                                                    System.out.println("Informe os dados abaixo.");
-                                                    maquina.setNumero(20);
-                                                    System.out.print("Configuração do hardware: ");
-                                                    maquina.setConf_hardware(x.next());
-                                                    System.out.print("Digite a quantidade: ");
-                                                    maquina.setQtd(x.nextInt());
-                                                    System.out.print("Digite o número da sala: ");
-                                                    maquina.setNumero(x.nextInt());
-                                                    System.out.println("Digite o Sistema");
-                                                    maquina.setSo(x.next());
-                                                    System.out.println("Digite os Softwares");
-                                                    maquina.setSoftwares(x.next());
-                                                    mlista.add(maquina);
-                                                    break;
+                                                switch (controleSwitch) {
+                                                    case 1:
+                                                        Maquina maquina = new Maquina();
+                                                        System.out.println("Informe os dados abaixo.");
+                                                        maquina.setNumero(20);
+                                                        System.out.print("Configuração do hardware: ");
+                                                        maquina.setConf_hardware(x.next());
+                                                        System.out.print("Digite a quantidade: ");
+                                                        maquina.setQtd(x.nextInt());
+                                                        System.out.print("Digite o número da sala: ");
+                                                        maquina.setNumero(x.nextInt());
+                                                        System.out.println("Digite o Sistema");
+                                                        maquina.setSo(x.next());
+                                                        System.out.println("Digite os Softwares");
+                                                        maquina.setSoftwares(x.next());
+                                                        mlista.add(maquina);
+                                                        break;
                                                 }
                                             } while (controleSwitch != 0);
                                             break;
@@ -306,22 +337,22 @@ public class Main {
                                     }
                                 } while (opGerenciar != 0);
                                 break;
-                                
-                            case 3: 
-                                do{
+
+                            case 3:
+                                do {
                                     System.out.println("1- GerenteSuporte\n2- Instrutor\n3- Gerente\n4- Estagiario\n0- Sair");
                                     opGerenciar = x.nextInt();
-                                    
-                                    switch(opGerenciar){
+
+                                    switch (opGerenciar) {
                                         case 1:
                                             System.out.println("Relatório:");
                                             for (GerenteSuporte gs : gslista) {
                                                 gs.toString();
                                                 System.out.println("");
                                             }
-                                            
+
                                             break;
-                                        
+
                                         case 2:
                                             System.out.println("Relatório:");
                                             for (Instrutor i : ilista) {
@@ -329,7 +360,7 @@ public class Main {
                                                 System.out.println("");
                                             }
                                             break;
-                                        
+
                                         case 3:
                                             System.out.println("Relatório:");
                                             for (Gerente g : glista) {
@@ -337,7 +368,7 @@ public class Main {
                                                 System.out.println("");
                                             }
                                             break;
-                                         
+
                                         case 4:
                                             System.out.println("Relatório:");
                                             for (Estagiario estagiario : estlista) {
@@ -345,12 +376,12 @@ public class Main {
                                                 System.out.println("");
                                             }
                                             break;
-                                        
+
                                         default:
                                             break;
                                     }
-                                    
-                                }while(opGerenciar != 0);
+
+                                } while (opGerenciar != 0);
                                 break;
                             default:
 
@@ -359,7 +390,8 @@ public class Main {
                     } while (opCadastro != 0);
                     break;
                 case 2:
-
+                    System.out.println("Relatório");
+                    historico.list();
                     break;
 
                 default:
@@ -367,24 +399,19 @@ public class Main {
             }
         } while (opGeral != 0);
     }
-    
-    public void menuGerente(int op){
-        switch(op){
-            case 1:
-                System.out.println("1-");
-                break;
-        }
+
+    public void menuGerente(int op) {
     }
-    
-    public void menuGerenteSuporte(int op){
+
+    public void menuGerenteSuporte(int op) {
 
     }
-    
-    public void menuInstrutor(int op){
-    
+
+    public void menuInstrutor(int op) {
+
     }
-    
-    public void menuDefault(int op){
-    
+
+    public void menuDefault(int op) {
+
     }
 }

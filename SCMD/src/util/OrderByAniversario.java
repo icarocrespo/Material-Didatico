@@ -1,5 +1,6 @@
 package util;
 
+import java.util.Comparator;
 import modelo.PessoaFisica;
 
 /**

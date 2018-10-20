@@ -9,12 +9,12 @@ import java.util.List;
  */
 public class Historico {
 
-    private Registro registro;
+//    private Registro registro;
     private List<Registro> registros;
     
     public Historico(List<Registro> registros, Registro registro) {
         this.registros = registros;
-        this.registro = registro;
+//        this.registro = registro;
     }
 
     public Historico(){
@@ -29,14 +29,22 @@ public class Historico {
         this.registros = registros;
     }
 
-    public Registro getRegistro() {
-        return registro;
-    }
-
-    public void setRegistro(Registro registro) {
-        this.registro = registro;
-    }
+//    public Registro getRegistro() {
+//        return registro;
+//    }
+//
+//    public void setRegistro(Registro registro) {
+//        this.registro = registro;
+//    }
     
+    public void list(){
+        for(Registro reg : registros){
+            System.out.println("ID: " + reg.getId() +
+                    "\nData de criação: " + reg.getCriacao() +
+                    "\nAlteração " + reg.getAlteracao() +
+                    "\nEmpregado " + (reg.getEmpregado() != null ? reg.getEmpregado().getNome() : "Nulo"));
+        }
+    }
     
     public boolean add(Registro registro){
         boolean retorno;

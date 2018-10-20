@@ -10,9 +10,9 @@ public class Registro {
     private Long id;
     private Empregado empregado;
     private Date criacao;
-    private Date alteracao;
+    private String alteracao;
 
-    public Registro(Long id, Empregado empregado, Date criacao, Date alteracao) {
+    public Registro(Long id, Empregado empregado, Date criacao, String alteracao) {
         this.id = id;
         this.empregado = empregado;
         this.criacao = criacao;
@@ -47,11 +47,11 @@ public class Registro {
         this.criacao = criacao;
     }
 
-    public Date getAlteracao() {
+    public String getAlteracao() {
         return alteracao;
     }
 
-    public void setAlteracao(Date alteracao) {
+    public void setAlteracao(String alteracao) {
         this.alteracao = alteracao;
     }
 }
