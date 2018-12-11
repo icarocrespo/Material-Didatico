@@ -5,22 +5,36 @@ package modelo;
  * @author icaro
  */
 public abstract class TipoPessoa {
-    
-    private Long id;
-    
+
+    private PessoaFisica fisica;
+    private PessoaJuridica juridica;
+
+    protected Boolean ativa;
+
     public abstract void print(int option);
 
-    /**
-     * @return the id
-     */
-    public Long getId() {
-        return id;
+    public PessoaFisica getFisica() {
+        return fisica;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
+    public void setFisica(PessoaFisica fisica) {
+        this.fisica = fisica;
     }
+
+    public PessoaJuridica getJuridica() {
+        return juridica;
+    }
+
+    public void setJuridica(PessoaJuridica juridica) {
+        this.juridica = juridica;
+    }
+
+    public Boolean getAtiva() {
+        return ativa;
+    }
+
+    public void setAtiva(Boolean ativa) {
+        this.ativa = ativa;
+    }
+
 }

@@ -1,24 +1,25 @@
 package modelo;
 
+public abstract class Pessoa {
 
-public abstract class Pessoa{
-    
     protected String nome;
     protected Long id;
     protected Endereco endereco;
     protected TipoPessoa tipoPessoa;
     protected static final Float SALARIO_BASE = 3500f;
-    
+
     public Pessoa(String nome, Long id, Endereco endereco, TipoPessoa tipoPessoa) {
         this.nome = nome;
         this.id = id;
         this.endereco = endereco;
         this.tipoPessoa = tipoPessoa;
     }
-    
-    public Pessoa(){
-        
+
+    public Pessoa() {
+
     }
+
+    public abstract boolean isTipoValido();
 
     public String getNome() {
         return nome;

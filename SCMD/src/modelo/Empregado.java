@@ -116,4 +116,9 @@ public abstract class Empregado extends Pessoa {
 //    public abstract void emitirRegistro(Date aniversario);
 //        
 //    public abstract void emitirRegistro(Lotacao lotacao);
+    
+    @Override
+    public boolean isTipoValido() {
+        return true;
+    }
 }

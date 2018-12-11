@@ -4,8 +4,8 @@ package modelo;
  *
  * @author icaro
  */
-public class Estagiario extends Pessoa{
-    
+public class Estagiario extends Pessoa {
+
     private Float bolsa;
 
     public Estagiario(Float bolsa, String nome, Long id, Endereco endereco, TipoPessoa tipoPessoa) {
@@ -16,9 +16,9 @@ public class Estagiario extends Pessoa{
     public Estagiario(Float bolsa) {
         this.bolsa = bolsa;
     }
-    
-    public Estagiario(){
-        
+
+    public Estagiario() {
+
     }
 
     public Float getBolsa() {
@@ -27,5 +27,10 @@ public class Estagiario extends Pessoa{
 
     public void setBolsa(Float bolsa) {
         this.bolsa = bolsa;
+    }
+
+    @Override
+    public boolean isTipoValido() {
+        return true;
     }
 }

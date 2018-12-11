@@ -4,16 +4,16 @@ package modelo;
  *
  * @author icaro
  */
-public class Filial extends Pessoa{
-    
+public class Filial extends Pessoa {
+
     private Empresa empresa;
-    
-    public Filial(Empresa empresa, TipoPessoa tipoPessoa){
+
+    public Filial(Empresa empresa, TipoPessoa tipoPessoa) {
         this.tipoPessoa = new PessoaJuridica();
         this.empresa = empresa;
     }
-    
-    public Filial(){
+
+    public Filial() {
         this.tipoPessoa = new PessoaJuridica();
     }
 
@@ -24,6 +24,9 @@ public class Filial extends Pessoa{
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
-    
-    
+
+    @Override
+    public boolean isTipoValido() {
+        return true;
+    }
 }

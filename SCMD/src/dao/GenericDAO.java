@@ -2,6 +2,9 @@ package dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import modelo.Empregado;
+import modelo.Gerente;
+import modelo.Instrutor;
 
 /**
  *
@@ -69,5 +72,18 @@ public abstract class GenericDAO<T, I> {
         for (T controle : list) {
             System.out.println(controle.toString());
         }
+    }
+    
+    public void listAtivo(){
+        List<Empregado> listEmp = new ArrayList<>();
+
+        if(list instanceof Empregado){
+            Empregado emp = new Instrutor();
+            if(emp.getAtivo()){
+//                listEmp.add(this.obj);
+            }
+        }else if (this.obj instanceof Gerente){
+            Empregado emp = new Gerente();
+    }
     }
 }

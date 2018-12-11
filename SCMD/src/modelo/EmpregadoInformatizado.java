@@ -18,4 +18,9 @@ public class EmpregadoInformatizado extends Empregado {
     public Float calculaSalario() {
         return 0f;
     }
+    
+    @Override
+	public boolean isTipoValido() {
+		return true;
+	}
 }

@@ -271,7 +271,8 @@ public class Main {
                                     registro.setAlteracao("Inicial");
                                     registro.setEmpregado(gerenteSuporte);
                                     registro.setId(1L);
-                                    historico.setRegistro(registro);
+                                    historico.add(registro);
+                                    
                                 } catch (Exception exception) {
                                     System.out.println("Erro ao adicionar gerente de suporte");
                                     System.out.println(exception.toString());
